@@ -1,21 +1,40 @@
 import React from 'react'
 import { useParams } from "react-router";
+import './MovieDetail.css'
 
 const MovieDetail = () => {
     const [data,SetData] = React.useState("")
-    const id=1
-    // const id=useParams();
+    const id=useParams();
+    const movieId=id.id;
+    console.log("id is" , movieId)
 
     React.useEffect(()=>{
         getData()
     },[])
-    const getData = () =>{ 
-        fetch(` http://localhost:8080/movies?q=${id}`).then((res)=>res.json()).then((res)=>SetData(res))
+    const getData = async () =>{ 
+      await  fetch(`http://localhost:8080/movies?id=${movieId}`).then((res)=>res.json()).then((res)=>SetData(res))
     }
+    console.log("data is",data)
   return (
     <div>
-        <h1>{data.title}</h1>
-        <p>{data.overview}</p>
+      
+        {
+          data.map((e)=>(
+            <div id='desc'>
+            <div id='poster'>
+            <img src={e.poster_path} alt="img" />
+            </div>
+           <div>
+            <h1>About {e.title}</h1>
+            <hr />
+            <p>Release Date : {e.release_date}</p>
+            <p>Popularity : {e.popularity}</p>
+            <h2>overview</h2>
+            <p>{e.overview}</p>
+           </div>
+            </div>
+          ))
+        }
     </div>
   )
 }
