@@ -13,6 +13,7 @@ const SignUp = () => {
             email,
             password
         }
+        localStorage.setItem("user",data)
        fetch(`http://localhost:8080/users`,{
         method:"POST",
         body: JSON.stringify(data),

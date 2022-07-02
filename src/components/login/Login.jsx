@@ -14,10 +14,21 @@ const Login = () => {
   .catch((err)=> console.log(err))
   auth();
     }
+    const Data = localStorage.getItem('user')
   const auth =()=>{
     const len = data.length;
     console.log("length of data" , len)
     if(data[data.length-1].email === email && data[data.length-1].password === password){
+      Navigate(`/movies`)
+    }
+    else{
+      alert("wrong password");
+    }
+  }
+  const Auth =()=>{
+    const len = Data.length;
+    console.log("length of data" , len)
+    if(Data[Data.length-1].email === email && Data[Data.length-1].password === password){
       Navigate(`/movies`)
     }
     else{
@@ -31,7 +42,7 @@ const Login = () => {
       <input type="text" placeholder='email'value={email} onChange={(e)=>SetEmail(e.target.value)}/>
       <label>PASSWORD:</label>
       <input type="password" placeholder='Password'value={password} onChange={(e)=>SetPassword(e.target.value)}/>
-      <Link to={`/movies`}><button onClick={handleLog}>Login</button></Link>
+      <button onClick={Auth}>Login</button>
     </div>
   )
 }
