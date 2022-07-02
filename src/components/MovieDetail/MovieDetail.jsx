@@ -6,8 +6,6 @@ const MovieDetail = () => {
     const [data,SetData] = React.useState("")
     const id=useParams();
     const movieId=id.id;
-    console.log("id is" , movieId)
-
     React.useEffect(()=>{
         getData()
     },[])
@@ -21,17 +19,17 @@ const MovieDetail = () => {
         {
           data.map((e)=>(
             <div id='desc'>
-            <div id='poster'>
-            <img src={e.poster_path} alt="img" />
-            </div>
-           <div>
-            <h1>About {e.title}</h1>
-            <hr />
-            <p>Release Date : {e.release_date}</p>
-            <p>Popularity : {e.popularity}</p>
-            <h2>overview</h2>
-            <p>{e.overview}</p>
-           </div>
+                <div id='poster'>
+                <img src={e.poster_path} alt="img" />
+                </div>
+                <div>
+                <h1>About {e.title}</h1>
+                <hr />
+                <p>Release Date : {e.release_date}</p>
+                <p>Popularity : {e.popularity}</p>
+                <h2>overview</h2>
+                <p>{e.overview}</p>
+                </div>
             </div>
           ))
         }

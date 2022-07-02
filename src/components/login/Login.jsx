@@ -31,7 +31,7 @@ const Login = () => {
       <input type="text" placeholder='email'value={email} onChange={(e)=>SetEmail(e.target.value)}/>
       <label>PASSWORD:</label>
       <input type="password" placeholder='Password'value={password} onChange={(e)=>SetPassword(e.target.value)}/>
-      <button onClick={handleLog}>Login</button>
+      <Link to={`/movies`}><button onClick={handleLog}>Login</button></Link>
     </div>
   )
 }
