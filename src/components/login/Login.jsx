@@ -25,16 +25,16 @@ const Login = () => {
       alert("wrong password");
     }
   }
-  const Auth =()=>{
-    const len = Data.length;
-    console.log("length of data" , len)
-    if(Data[Data.length-1].email === email && Data[Data.length-1].password === password){
-      Navigate(`/movies`)
-    }
-    else{
-      alert("wrong password");
-    }
-  }
+  // const Auth =()=>{
+  //   const len = Data.length;
+  //   console.log("length of data" , len,Data)
+  //   if(Data[Data.length-1][1] === email && Data[Data.length-1][2]=== password){
+  //     Navigate(`/movies`)
+  //   }
+  //   else{
+  //     alert("wrong password");
+  //   }
+  // }
   return (
     <div>
       <h1>Login</h1>
@@ -42,7 +42,7 @@ const Login = () => {
       <input type="text" placeholder='email'value={email} onChange={(e)=>SetEmail(e.target.value)}/>
       <label>PASSWORD:</label>
       <input type="password" placeholder='Password'value={password} onChange={(e)=>SetPassword(e.target.value)}/>
-      <button onClick={Auth}>Login</button>
+      <Link to={`/movies`}> <button onClick={auth}>Login</button></Link>
     </div>
   )
 }

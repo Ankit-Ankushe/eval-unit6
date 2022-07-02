@@ -7,13 +7,13 @@ const SignUp = () => {
     const [email,SetEmail] = React.useState("")
     const [password,SetPassword] = React.useState("")
 
+    
     const handleAdd= ()=>{
         const data={
             name,
             email,
             password
         }
-        localStorage.setItem("user",data)
        fetch(`http://localhost:8080/users`,{
         method:"POST",
         body: JSON.stringify(data),
@@ -23,7 +23,14 @@ const SignUp = () => {
        }).then((res) => res.json())
         .catch((err)=> console.log(err));
     }
-
+    const setItem = () =>{
+      const data={
+        name:name,
+        email,
+        password
+    }
+  }
+  localStorage.setItem("user",1)
   return (
     <div>
       <h1>Sign Up</h1>
@@ -33,7 +40,7 @@ const SignUp = () => {
       <input type="text" placeholder='email'value={email} onChange={(e)=>SetEmail(e.target.value)}/>
       <label>PASSWORD:</label>
       <input type="password" placeholder='password'value={password} onChange={(e)=>SetPassword(e.target.value)}/>
-      <Link to={`/login`}><button onClick={handleAdd}>Signup</button></Link>
+      <Link to={`/login`}><button onClick={setItem}>Signup</button></Link>
     </div>
   )
 }
